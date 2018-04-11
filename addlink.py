@@ -3,13 +3,13 @@
 import os
 import sys
 from uuid import uuid4
-from datetime import datetime, timedelta
+from datetime import datetime, timezone, timedelta
 
 DEFAULT_EXPIRE_DAYS=30
 
 def add_file(path, expire_days=DEFAULT_EXPIRE_DAYS, never_expire=False):
     key    = str(uuid4())
-    expire = (datetime.now() + timedelta(days=expire_days)).isoformat()
+    expire = (datetime.now(timezone.utc) + timedelta(days=expire_days)).isoformat()
     if never_expire: expire = None
     with open('./links.csv', 'a') as f:
         f.write('{}, {}, {}\n'.format(key, path, expire))
