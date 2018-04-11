@@ -21,12 +21,13 @@ def get_file_info(uuid):
             if uuid_ == uuid:
                 expire = parse_date(expire)
                 return path, expire
+    raise Fail('uuid not found')
 
 @route('/<uuid>/<filename>', methods=['GET','HEAD'])
 def serve_files(request, uuid, filename):
     UUID(uuid)  # just create it to see if it validates
     path, expiry_date = get_file_info(uuid)
-    if datetime.now() > expiry_date: raise Fail('expired')
+    if datetime.now(timezone.utc) > expiry_date: raise Fail('expired')
     if filename != os.path.basename(path): raise Fail('path does not match')
     return File(os.path.join(BASEDIR, path))
 
