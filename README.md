@@ -21,9 +21,9 @@ This is especially nice if you use another tool to synchronize files between you
 Security
 --------
 
-The URLs are of the form `path/to/file?key=$secret_key`. The key must be correct, otherwise it will 404. The key is a 128-bit random string, therefore the URLs are unguessable. By default URLs expire after 30 days.
+The URLs are of the form `/uuid/filename`. Anything other than a readable file with the correct UUID and filename returns a 404 (to avoid leaking any info). The key is a 128-bit random-based UUID, therefore the URLs are unguessable. By default URLs expire after 30 days.
 
-Note that the (full) file paths are revealed. If this is a problem for you, let me know and I might think of something.
+Note that the filenames (but not the full paths) are revealed.
 
 Only GET (and HEAD) requests are supported and the program never writes any file. If you want to, you can run it as a user that has only read access.
 
