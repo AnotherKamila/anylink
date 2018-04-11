@@ -7,6 +7,8 @@ Just like cloud services' "Share -> Anyone with the link", but without the hassl
 
 Comes with a nice commandline interface -- just type `./url myserver path/to/file`.
 
+Entire directories can be shared too -- just add a directory by typing `./url myserver path/to/dir`.
+
 Trivial to set up -- needs just Python.
 
 Usage Tips
