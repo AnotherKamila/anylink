@@ -23,7 +23,7 @@ This is especially nice if you use another tool to synchronize files between you
 Security
 --------
 
-The URLs are of the form `/uuid/filename`. Anything other than a readable file with the correct UUID and filename returns a 404 (to avoid leaking any info). The key is a 128-bit random-based UUID, therefore the URLs are unguessable. By default URLs expire after 30 days.
+The URLs are of the form `/uuid/filename`. Anything other than a readable file with the correct UUID and filename returns a 404 (to avoid leaking any info). The key is a random UUID, therefore the URLs are unguessable. By default URLs expire after 30 days.
 
 Note that the filenames (but not the full paths) are revealed.
 
